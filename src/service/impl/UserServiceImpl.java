@@ -34,14 +34,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    /**
+     * TODO: Name cannot be duplicate and it's format is limited;
+     */
     @Override
     public Boolean register(String name, String password) {
-        if (iUserDao.insertUser(name, password) > 0) {
-            return true;
-        } else {
+        if ((name == null) || (password == null)) {
             return false;
         }
+        iUserDao.insertUser(name, password);
+        return true;
     }
-
 }

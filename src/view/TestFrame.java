@@ -29,7 +29,7 @@ public class TestFrame extends JFrame {
         protected void paintComponent(Graphics g) {
             Image bg;
             try {
-                bg = ImageIO.read(new File("src/image/4.jpg"));
+                bg = ImageIO.read(new File("src/image/4.jfpg"));
                 g.drawImage(bg, 0, 0, getWidth(), getHeight(), null);
             } catch (IOException e) {
                 e.printStackTrace();

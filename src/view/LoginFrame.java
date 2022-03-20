@@ -42,17 +42,17 @@ public class LoginFrame implements MouseListener {
         label1.setForeground(Color.black);//设置字体颜色
         label2.setFont(font);
         label2.setForeground(Color.black);
-        label3.setFont(new Font("宋体",Font.BOLD,15));
+        label3.setFont(new Font("宋体", Font.BOLD, 15));
         label3.setForeground(Color.black);
         userNameIn.setOpaque(false);//设置文本框透明
         passWordIn.setOpaque(false);
 
         btn1.setFont(font);
-        btn1.setBackground(Color.getHSBColor(220,40,30));
+        btn1.setBackground(Color.getHSBColor(220, 40, 30));
         btn1.setForeground(Color.orange);
         btn1.setBorder(BorderFactory.createRaisedBevelBorder());//设置突出button组件  
         btn2.setContentAreaFilled(false);
-        btn2.setFont(new Font("宋体",Font.BOLD,16));
+        btn2.setFont(new Font("宋体", Font.BOLD, 16));
         btn2.setForeground(Color.orange);
         JPanel bj = new JPanel() {//设置背景
             protected void paintComponent(Graphics g) {
@@ -106,19 +106,52 @@ public class LoginFrame implements MouseListener {
                 testFrame.setVisible(true);
                 loginFrame.setVisible(false);
             } else if (userService.login(userName, passWord) == 2) {
-                JOptionPane.showMessageDialog(null, "密码错误！", "提示", 2);
+                JOptionPane.showMessageDialog(
+                        null,
+                        "密码错误！",
+                        "提示",
+                        2);
                 passWordIn.setText("");
             } else {
-                JOptionPane.showMessageDialog(null, "此id不存在，请先注册！", "提示", 2);
+                JOptionPane.showMessageDialog(
+                        null,
+                        "此id不存在，请先注册！",
+                        "提示",
+                        2);
                 userNameIn.setText("");
                 passWordIn.setText("");
             }
         }
         if (distinguish == 2) {
-            String name = (String) JOptionPane.showInputDialog(null, "请输入你的id：\n", "注册", JOptionPane.PLAIN_MESSAGE, null, null, "在这输入");
-            String passWord = (String) JOptionPane.showInputDialog(null, "请输入你的密码：\n", "注册", JOptionPane.PLAIN_MESSAGE, null, null, "在这输入");
-            userService.register(name, passWord);
-            JOptionPane.showMessageDialog(null, "注册成功！", "提示", 2);
+            String name = (String) JOptionPane.showInputDialog(
+                    null,
+                    "请输入你的id：\n",
+                    "注册",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "在这输入");
+            String passWord = (String) JOptionPane.showInputDialog(
+                    null,
+                    "请输入你的密码：\n",
+                    "注册",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "在这输入");
+            if (userService.register(name, passWord)) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "注册成功！",
+                        "提示",
+                        2);
+            }else{
+                JOptionPane.showMessageDialog(
+                        null,
+                        "注册失败，请重新输入！",
+                        "提示",
+                        2);
+            }
         }
     }
 
@@ -136,7 +169,7 @@ public class LoginFrame implements MouseListener {
     public void mouseEntered(MouseEvent arg0) {
         if (arg0.getSource() == btn1) {
             distinguish = 1;//鼠标悬停在btn1处则把distinguish置1  
-            btn1.setBackground(Color.getHSBColor(220,40,30));//改变颜色
+            btn1.setBackground(Color.getHSBColor(220, 40, 30));//改变颜色
             btn1.setForeground(Color.white);
             btn2.setForeground(Color.orange);
             btn2.setBorder(null);
@@ -145,12 +178,10 @@ public class LoginFrame implements MouseListener {
         if (arg0.getSource() == btn2) {
             distinguish = 2;
             btn1.setForeground(Color.orange);
-            btn1.setBackground(Color.getHSBColor(220,40,30));
+            btn1.setBackground(Color.getHSBColor(220, 40, 30));
             btn1.setBorder(BorderFactory.createRaisedBevelBorder());
             btn2.setForeground(Color.white);
             btn2.setBackground(Color.darkGray);
-
-
         }
 
     }
@@ -169,4 +200,4 @@ public class LoginFrame implements MouseListener {
         btn2.setForeground(Color.orange);
 
     }
-} 
+}
