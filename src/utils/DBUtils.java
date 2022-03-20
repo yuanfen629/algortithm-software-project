@@ -6,9 +6,9 @@ import java.util.Objects;
 public class DBUtils {
 
     private String DBDriver = "com.mysql.jdbc.Driver";
-    private String DBURL = "jdbc:mysql://localhost:3306/algorithm_test?autoRec";
+    private String DBURL = "jdbc:mysql://localhost:3306/algorithm_test?useUnicode=true&characterEncoding=utf8";
     private String DBUser = "root";
-    private String DBPass = "root";
+    private String DBPass = "123456";
     private Connection conn = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
